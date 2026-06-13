@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ross Fisher — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f6f8;
+    --surface: #ffffff;
+    --border: #dde2ea;
+    --border-light: #eef1f5;
+    --text-primary: #1a1f2e;
+    --text-secondary: #4a5268;
+    --text-muted: #8892a4;
+    --accent: #0e7fdb;
+    --accent-light: #e8f2fc;
+    --accent-mid: #5aabf0;
+    --sans: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 48px auto;
+    background: var(--surface);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+
+  /* Header band */
+  .header {
+    background: var(--text-primary);
+    padding: 40px 48px 36px;
+    color: white;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .name {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: white;
+    line-height: 1.1;
+  }
+
+  .name-sub {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent-mid);
+    margin-top: 7px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .contact-block {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: right;
+  }
+
+  .contact-block a,
+  .contact-block span {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .contact-block a:hover { color: var(--accent-mid); }
+
+  .summary {
+    margin-top: 24px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.75);
+    max-width: 700px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+  }
+
+  /* Body */
+  .body {
+    padding: 40px 48px 48px;
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section:last-child { margin-bottom: 0; }
+
+  .section-title {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Certifications */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 10px;
+  }
+
+  .cert {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    background: var(--bg);
+  }
+
+  .cert.active {
+    border-color: #c8dff6;
+    background: var(--accent-light);
+  }
+
+  .cert-name {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text-primary);
+  }
+
+  .cert-full {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+
+  .cert-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    margin-top: 6px;
+  }
+
+  .cert.active .cert-meta { color: var(--accent); }
+  .cert:not(.active) .cert-meta { color: var(--text-muted); }
+
+  /* Experience */
+  .job {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .job:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .job-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .job-company {
+    font-size: 13px;
+    color: var(--accent);
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  .job-dates {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+
+  .job-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .job-bullets li {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.65;
+  }
+
+  .job-bullets li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  /* Independent study */
+  .study-item {
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 18px 20px;
+    margin-bottom: 10px;
+    background: var(--bg);
+  }
+
+  .study-item:last-child { margin-bottom: 0; }
+
+  .study-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .study-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .study-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .study-link:hover { text-decoration: underline; }
+
+  .study-desc {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* Skills */
+  .skill-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .skill-row {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .skill-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    min-width: 130px;
+    flex-shrink: 0;
+  }
+
+  .skill-values {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Education */
+  .edu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .edu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .edu-degree {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .edu-school {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 16px 48px;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .footer-note {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 18px;
+  }
+
+  .footer-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .page { margin: 0; border-radius: 0; }
+    .header, .body { padding: 28px 24px; }
+    .footer { padding: 16px 24px; }
+    .contact-block { text-align: left; }
+    .header-top { flex-direction: column; }
+    .skill-label { min-width: unset; width: 100%; }
+  }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; border: none; box-shadow: none; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-top">
+      <div>
+        <div class="name">Ross Fisher</div>
+        <div class="name-sub">Field Engineering Operations Technician — Cox Business</div>
+      </div>
+      <div class="contact-block">
+        <a href="https://linkedin.com/in/rossfish" target="_blank">linkedin.com/in/rossfish</a>
+        <a href="https://github.com/therossfisher" target="_blank">github.com/therossfisher</a>
+        <span>San Diego, CA</span>
+      </div>
+    </div>
+    <p class="summary">
+      Network engineering professional with 20 years of telecommunications experience, 
+      the last four provisioning and troubleshooting enterprise Layer 2 and Layer 3 services 
+      on Nokia carrier-grade MPLS infrastructure. GIAC-certified in incident handling and 
+      security essentials. Actively building toward a transition into network security — 
+      currently pursuing penetration testing credentials and maintaining a self-operated 
+      security research homelab. Strong foundation in how networks are built and how traffic 
+      moves at the carrier level, paired with growing hands-on offensive security skills.
+    </p>
+  </header>
+
+  <div class="body">
+
+    <!-- Certifications -->
+    <section class="section">
+      <div class="section-title">Certifications</div>
+      <div class="cert-grid">
+        <div class="cert active">
+          <div class="cert-name">GCIH</div>
+          <div class="cert-full">GIAC Certified Incident Handler</div>
+          <div class="cert-meta">Active — expires Apr 2029</div>
+        </div>
+        <div class="cert active">
+          <div class="cert-name">GSEC</div>
+          <div class="cert-full">GIAC Security Essentials</div>
+          <div class="cert-meta">Active — expires Dec 2028</div>
+        </div>
+        <div class="cert active">
+          <div class="cert-name">GISF</div>
+          <div class="cert-full">GIAC Information Security Fundamentals</div>
+          <div class="cert-meta">Active — expires Sep 2028</div>
+        </div>
+        <div class="cert active">
+          <div class="cert-name">GFACT</div>
+          <div class="cert-full">GIAC Foundational Cybersecurity Technologies</div>
+          <div class="cert-meta">Active — expires Mar 2028</div>
+        </div>
+        <div class="cert active">
+          <div class="cert-name">Advisory Board</div>
+          <div class="cert-full">GIAC Advisory Board Member</div>
+          <div class="cert-meta">Active — expires Dec 2028</div>
+        </div>
+        <div class="cert">
+          <div class="cert-name">ISC² CC</div>
+          <div class="cert-full">Certified in Cybersecurity</div>
+          <div class="cert-meta">Expired Jan 2026</div>
+        </div>
+        <div class="cert">
+          <div class="cert-name">CCNA</div>
+          <div class="cert-full">Cisco Certified Network Associate</div>
+          <div class="cert-meta">Expired Jul 2024</div>
+        </div>
+        <div class="cert">
+          <div class="cert-name">NRS-I</div>
+          <div class="cert-full">Nokia Routing Specialist I</div>
+          <div class="cert-meta">Expired May 2025</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section">
+      <div class="section-title">Experience</div>
+
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Field Engineering Operations Technician II</div>
+            <div class="job-company">Cox Business — Access Transport, San Diego, CA</div>
+          </div>
+          <div class="job-dates">Mar 2022 — Present</div>
+        </div>
+        <ul class="job-bullets">
+          <li>Provision end-to-end Layer 2 and Layer 3 customer services on Nokia production MPLS routing infrastructure, including Optical/Fiber Internet, VPLS, ELAN point-to-point, SIP voice, and Metro-Ethernet circuits</li>
+          <li>Build and execute service configuration scripts using in-house automation tooling to deploy and modify services across the Nokia router fleet</li>
+          <li>Monitor network performance and service quality using Skylight with Accedian Network Interface Devices at carrier-to-customer demarcation points</li>
+          <li>Provide real-time provisioning support to field technicians during installations, troubleshooting escalations, and live maintenance windows</li>
+          <li>Coordinate equipment migrations and service re-provisioning during maintenance windows, updating router configurations to move services from legacy to replacement hardware</li>
+          <li>Staged, provisioned, and led migration of 23-site school district VPLS from Nokia FP3 to FP4 platform with no service disruption during hot cut</li>
+          <li>Led successful troubleshooting resolution for failed geo-redundant SIP circuit transfer</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Business Technology Technician II</div>
+            <div class="job-company">Cox Business — San Diego, CA</div>
+          </div>
+          <div class="job-dates">Aug 2018 — Mar 2022</div>
+        </div>
+        <ul class="job-bullets">
+          <li>Installed, configured, troubleshot, and repaired enterprise Cox Business services including Metro-Ethernet, SIP trunks, IP Centrex, Business Voice Manager, and detection and surveillance systems</li>
+          <li>Rebuilt 40+ camera surveillance system for large campus mortuary; led small team for multi-site surveillance and security system installs</li>
+          <li>Primary escalation technician for complex customer issues across San Diego region</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Field Service Supervisor</div>
+            <div class="job-company">Cox Communications — San Diego, CA</div>
+          </div>
+          <div class="job-dates">Sep 2015 — Aug 2018</div>
+        </div>
+        <ul class="job-bullets">
+          <li>Led a team of 14 field technicians across residential and commercial service operations; drove performance metrics and net promoter scores</li>
+          <li>Quarterly NPS regional top performer; coached multiple team members into leadership promotions</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Universal Home Technician</div>
+            <div class="job-company">Cox Communications — Santa Barbara &amp; San Diego, CA</div>
+          </div>
+          <div class="job-dates">May 2006 — Sep 2015</div>
+        </div>
+        <ul class="job-bullets">
+          <li>Installed and serviced Cox residential broadband, digital telephone, home networking, and home security/life systems across two markets over nine years</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Independent Study -->
+    <section class="section">
+      <div class="section-title">Independent Study &amp; Research</div>
+
+      <div class="study-item">
+        <div class="study-header">
+          <div class="study-name">Security Research Homelab — DShield / SANS ISC Honeypot</div>
+          <a class="study-link" href="https://dashboard.therossfisher.xyz" target="_blank">dashboard.therossfisher.xyz →</a>
+        </div>
+        <p class="study-desc">
+          Raspberry Pi 4 running Cowrie SSH/Telnet honeypot and Suricata 7.0 IDS with Emerging Threats ruleset, 
+          reporting to the SANS Internet Storm Center (sensor ID 3000055796). 
+          Live threat intelligence dashboard auto-updated every 30 minutes. 
+          Authored two threat intelligence reports documenting the Redtail cryptominer campaign (May 2026) 
+          and Outlaw/mdrfckr IRC botnet infrastructure (May 2026).
+        </p>
+      </div>
+
+      <div class="study-item">
+        <div class="study-header">
+          <div class="study-name">Offensive Security Learning Path</div>
+          <a class="study-link" href="https://github.com/therossfisher/offensive-security-journey" target="_blank">github.com/therossfisher →</a>
+        </div>
+        <p class="study-desc">
+          Working through TryHackMe Jr Penetration Tester path (top 15% globally) and HackTheBox Starting Point 
+          machines. Documenting methodology, tooling, and findings in a public GitHub vault. 
+          Active HackerOne researcher (handle: nothax). 
+          Tools in active use include nmap, gobuster, Burp Suite, Caido, Metasploit, Responder, and John the Ripper.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- Skills -->
+    <section class="section">
+      <div class="section-title">Technical Skills</div>
+      <div class="skill-rows">
+        <div class="skill-row">
+          <span class="skill-label">Network Infra</span>
+          <span class="skill-values">Nokia 7750 SR/IXR, Nokia NFMP, MPLS/VPLS, Metro-Ethernet, SIP, ELAN, Layer 2/3 services, TCP/IP, BGP fundamentals</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Security Tools</span>
+          <span class="skill-values">Suricata, Cowrie, Wireshark, nmap, gobuster, Burp Suite, Caido, Metasploit, Responder, John the Ripper</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Platforms</span>
+          <span class="skill-values">Linux (Kali, Raspberry Pi OS), Windows, SecureCRT, Skylight, UET/Remedy, SharePoint</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Security Concepts</span>
+          <span class="skill-values">Incident handling, network security fundamentals, threat intelligence, MITRE ATT&amp;CK (awareness), OWASP Top 10 (awareness), cyber kill chain</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Infrastructure</span>
+          <span class="skill-values">Terraform (learning), Ansible (learning), GCP, Git, GitHub, Docker (basic)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="section">
+      <div class="section-title">Education</div>
+      <div class="edu-list">
+        <div class="edu-item">
+          <div>
+            <div class="edu-degree">AS, Computer Network Engineering</div>
+            <div class="edu-school">Santa Barbara City College</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div>
+            <div class="edu-degree">AA, General Studies</div>
+            <div class="edu-school">Santa Barbara City College</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /body -->
+
+  <footer class="footer">
+    <span class="footer-note">resume.therossfisher.xyz</span>
+    <div class="footer-links">
+      <a href="https://github.com/therossfisher" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/rossfish" target="_blank">LinkedIn</a>
+      <a href="https://dashboard.therossfisher.xyz" target="_blank">Threat Intel Dashboard</a>
+   <span class="footer-note">Visitors: <span id="visitor-count">...</span></span>
+    </div>
+  </footer>
+
+</div>
+<script>
+async function updateVisitorCount() {
+    try {
+        const response = await fetch('https://wzwr121ije.execute-api.us-east-1.amazonaws.com/production/visits');
+        const data = await response.json();
+        document.getElementById('visitor-count').textContent = data.visits;
+    } catch (error) {
+        console.error('Could not fetch visitor count:', error);
+    }
+}
+updateVisitorCount();
+</script>
+</body>
+</html>
