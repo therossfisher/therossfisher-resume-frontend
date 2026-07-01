@@ -42,7 +42,6 @@
     box-shadow: 0 2px 16px rgba(0,0,0,0.06);
   }
 
-  /* Header band */
   .header {
     background: var(--text-primary);
     padding: 40px 48px 36px;
@@ -102,12 +101,10 @@
     padding-top: 20px;
   }
 
-  /* Body */
   .body {
     padding: 40px 48px 48px;
   }
 
-  /* Section */
   .section {
     margin-bottom: 40px;
   }
@@ -134,7 +131,6 @@
     background: var(--border);
   }
 
-  /* Certifications */
   .cert-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
@@ -174,7 +170,6 @@
   .cert.active .cert-meta { color: var(--accent); }
   .cert:not(.active) .cert-meta { color: var(--text-muted); }
 
-  /* Experience */
   .job {
     margin-bottom: 28px;
     padding-bottom: 28px;
@@ -239,7 +234,6 @@
     color: var(--accent);
   }
 
-  /* Independent study */
   .study-item {
     border: 1px solid var(--border);
     border-radius: 7px;
@@ -280,7 +274,6 @@
     line-height: 1.65;
   }
 
-  /* Skills */
   .skill-rows {
     display: flex;
     flex-direction: column;
@@ -310,7 +303,6 @@
     line-height: 1.6;
   }
 
-  /* Education */
   .edu-list {
     display: flex;
     flex-direction: column;
@@ -337,7 +329,6 @@
     margin-top: 2px;
   }
 
-  /* Footer */
   .footer {
     padding: 16px 48px;
     background: var(--bg);
@@ -388,7 +379,6 @@
 <body>
 <div class="page">
 
-  <!-- Header -->
   <header class="header">
     <div class="header-top">
       <div>
@@ -402,19 +392,18 @@
       </div>
     </div>
     <p class="summary">
-      Network engineering professional with 20 years of telecommunications experience, 
-      the last four provisioning and troubleshooting enterprise Layer 2 and Layer 3 services 
-      on Nokia carrier-grade MPLS infrastructure. GIAC-certified in incident handling and 
-      security essentials. Actively building toward a transition into network security — 
-      currently pursuing penetration testing credentials and maintaining a self-operated 
-      security research homelab. Strong foundation in how networks are built and how traffic 
-      moves at the carrier level, paired with growing hands-on offensive security skills.
+      Network engineering professional with 20 years of telecommunications experience,
+      the last four provisioning and troubleshooting enterprise Layer 2 and Layer 3 services
+      on Nokia carrier-grade MPLS infrastructure across a four-state footprint. GIAC-certified
+      in incident handling and security essentials. Actively building toward a transition into
+      network security — currently pursuing penetration testing credentials and maintaining a
+      self-operated security research homelab. Strong foundation in how networks are built and
+      how traffic moves at the carrier level, paired with growing hands-on offensive security skills.
     </p>
   </header>
 
   <div class="body">
 
-    <!-- Certifications -->
     <section class="section">
       <div class="section-title">Certifications</div>
       <div class="cert-grid">
@@ -461,7 +450,6 @@
       </div>
     </section>
 
-    <!-- Experience -->
     <section class="section">
       <div class="section-title">Experience</div>
 
@@ -474,13 +462,14 @@
           <div class="job-dates">Mar 2022 — Present</div>
         </div>
         <ul class="job-bullets">
-          <li>Provision end-to-end Layer 2 and Layer 3 customer services on Nokia production MPLS routing infrastructure, including Optical/Fiber Internet, VPLS, ELAN point-to-point, SIP voice, and Metro-Ethernet circuits</li>
-          <li>Build and execute service configuration scripts using in-house automation tooling to deploy and modify services across the Nokia router fleet</li>
+          <li>Provision end-to-end Layer 2 and Layer 3 customer services on Nokia production MPLS routing infrastructure spanning California, Nevada, Arizona, and Idaho — a fleet of thousands of carrier-grade devices maintained at 99.9999% uptime</li>
+          <li>Build and execute service configuration scripts using in-house automation tooling to deploy and modify services across the Nokia router fleet; averaged 2–3 circuit builds and cutovers per working day with zero outages across hundreds of deployments</li>
           <li>Monitor network performance and service quality using Skylight with Accedian Network Interface Devices at carrier-to-customer demarcation points</li>
           <li>Provide real-time provisioning support to field technicians during installations, troubleshooting escalations, and live maintenance windows</li>
           <li>Coordinate equipment migrations and service re-provisioning during maintenance windows, updating router configurations to move services from legacy to replacement hardware</li>
-          <li>Staged, provisioned, and led migration of 23-site school district VPLS from Nokia FP3 to FP4 platform with no service disruption during hot cut</li>
+          <li>Staged, provisioned, and led the hot cut migration of a 23-site school district VPLS network from Nokia FP3 to FP4 platform — all 23 sites completed in under 60 minutes with zero service disruption</li>
           <li>Led successful troubleshooting resolution for failed geo-redundant SIP circuit transfer</li>
+          <li>Trained and mentored two new hires in Nokia configuration, circuit provisioning, and troubleshooting methodology; one has since advanced to a management role</li>
         </ul>
       </div>
 
@@ -527,7 +516,6 @@
       </div>
     </section>
 
-    <!-- Independent Study -->
     <section class="section">
       <div class="section-title">Independent Study &amp; Research</div>
 
@@ -537,10 +525,10 @@
           <a class="study-link" href="https://dashboard.therossfisher.xyz" target="_blank">dashboard.therossfisher.xyz →</a>
         </div>
         <p class="study-desc">
-          Raspberry Pi 4 running Cowrie SSH/Telnet honeypot and Suricata 7.0 IDS with Emerging Threats ruleset, 
-          reporting to the SANS Internet Storm Center (sensor ID 3000055796). 
-          Live threat intelligence dashboard auto-updated every 30 minutes. 
-          Authored two threat intelligence reports documenting the Redtail cryptominer campaign (May 2026) 
+          Raspberry Pi 4 running Cowrie SSH/Telnet honeypot and Suricata 7.0 IDS with Emerging Threats ruleset,
+          reporting to the SANS Internet Storm Center (sensor ID 3000055796).
+          Live threat intelligence dashboard auto-updated every 30 minutes.
+          Authored two threat intelligence reports documenting the Redtail cryptominer campaign (May 2026)
           and Outlaw/mdrfckr IRC botnet infrastructure (May 2026).
         </p>
       </div>
@@ -551,15 +539,14 @@
           <a class="study-link" href="https://github.com/therossfisher/offensive-security-journey" target="_blank">github.com/therossfisher →</a>
         </div>
         <p class="study-desc">
-          Working through TryHackMe Jr Penetration Tester path (top 15% globally) and HackTheBox Starting Point 
+          TryHackMe Jr Penetration Tester path — top 2% globally, 157 rooms completed. HackTheBox Starting Point
           machines. Documenting methodology, tooling, and findings in a public GitHub vault.
-          Tools in active use include nmap, gobuster, Burp Suite, Caido, Metasploit, Responder, and John the Ripper.
+          Tools in active use include nmap, gobuster, Burp Suite, Caido, Metasploit, Responder, and Hashcat.
         </p>
       </div>
 
     </section>
 
-    <!-- Skills -->
     <section class="section">
       <div class="section-title">Technical Skills</div>
       <div class="skill-rows">
@@ -569,7 +556,7 @@
         </div>
         <div class="skill-row">
           <span class="skill-label">Security Tools</span>
-          <span class="skill-values">Suricata, Cowrie, Wireshark, nmap, gobuster, Burp Suite, Caido, Metasploit, Responder, John the Ripper</span>
+          <span class="skill-values">Suricata, Cowrie, Wireshark, nmap, gobuster, Burp Suite, Caido, Metasploit, Responder, Hashcat</span>
         </div>
         <div class="skill-row">
           <span class="skill-label">Platforms</span>
@@ -577,16 +564,15 @@
         </div>
         <div class="skill-row">
           <span class="skill-label">Security Concepts</span>
-          <span class="skill-values">Incident handling, network security fundamentals, threat intelligence, MITRE ATT&amp;CK (awareness), OWASP Top 10 (awareness), cyber kill chain</span>
+          <span class="skill-values">Incident handling, network security fundamentals, threat intelligence, MITRE ATT&amp;CK, OWASP Top 10, cyber kill chain</span>
         </div>
         <div class="skill-row">
           <span class="skill-label">Infrastructure</span>
-          <span class="skill-values">Terraform (learning), Ansible (learning), GCP, Git, GitHub, Docker (basic)</span>
+          <span class="skill-values">Terraform, Git, GitHub, GitHub Actions CI/CD, AWS (S3, CloudFront, Lambda, DynamoDB, API Gateway, Route53), Docker (basic)</span>
         </div>
       </div>
     </section>
 
-    <!-- Education -->
     <section class="section">
       <div class="section-title">Education</div>
       <div class="edu-list">
@@ -605,7 +591,7 @@
       </div>
     </section>
 
-  </div><!-- /body -->
+  </div>
 
   <footer class="footer">
     <span class="footer-note">therossfisher.xyz</span>
@@ -613,7 +599,7 @@
       <a href="https://github.com/therossfisher" target="_blank">GitHub</a>
       <a href="https://linkedin.com/in/rossfish" target="_blank">LinkedIn</a>
       <a href="https://dashboard.therossfisher.xyz" target="_blank">Threat Intel Dashboard</a>
-   <span class="footer-note">Visitors: <span id="visitor-count">...</span></span>
+      <span class="footer-note">Visitors: <span id="visitor-count">...</span></span>
     </div>
   </footer>
 
