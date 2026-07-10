@@ -392,13 +392,12 @@
       </div>
     </div>
     <p class="summary">
-      Network engineering professional with 20 years of telecommunications experience,
-      the last four provisioning and troubleshooting enterprise Layer 2 and Layer 3 services
-      on Nokia carrier-grade MPLS infrastructure across a four-state footprint. GIAC-certified
-      in incident handling and security essentials. Actively building toward a transition into
-      network security — currently pursuing penetration testing credentials and maintaining a
-      self-operated security research homelab. Strong foundation in how networks are built and
-      how traffic moves at the carrier level, paired with growing hands-on offensive security skills.
+      20 years in telecommunications, the last four building and troubleshooting Layer 2 and
+      Layer 3 services on Nokia carrier-grade MPLS infrastructure across California, Nevada,
+      Arizona, and Idaho. GIAC-certified in incident handling (GCIH) and security essentials
+      (GSEC), with penetration testing credentials in progress. Runs a self-operated security
+      research homelab and is applying two decades of carrier-level network depth to a move
+      into network security.
     </p>
   </header>
 
@@ -462,13 +461,13 @@
           <div class="job-dates">Mar 2022 — Present</div>
         </div>
         <ul class="job-bullets">
-          <li>Provision end-to-end Layer 2 and Layer 3 customer services on Nokia production MPLS routing infrastructure spanning California, Nevada, Arizona, and Idaho — a fleet of thousands of carrier-grade devices maintained at 99.9999% uptime</li>
-          <li>Build and execute service configuration scripts using in-house automation tooling to deploy and modify services across the Nokia router fleet; averaged 2–3 circuit builds and cutovers per working day with zero outages across hundreds of deployments</li>
+          <li>Provision end-to-end Layer 2 and Layer 3 customer services on Nokia production MPLS routing infrastructure spanning California, Nevada, Arizona, and Idaho, a fleet of thousands of carrier-grade devices</li>
+          <li>Build and execute service configuration scripts using in-house automation tooling to deploy and modify services across the Nokia router fleet, averaging 2–3 circuit builds and cutovers per working day with zero outages across hundreds of deployments</li>
           <li>Monitor network performance and service quality using Skylight with Accedian Network Interface Devices at carrier-to-customer demarcation points</li>
           <li>Provide real-time provisioning support to field technicians during installations, troubleshooting escalations, and live maintenance windows</li>
           <li>Coordinate equipment migrations and service re-provisioning during maintenance windows, updating router configurations to move services from legacy to replacement hardware</li>
-          <li>Staged, provisioned, and led the hot cut migration of a 23-site school district VPLS network from Nokia FP3 to FP4 platform — all 23 sites completed in under 60 minutes with zero service disruption</li>
-          <li>Led successful troubleshooting resolution for failed geo-redundant SIP circuit transfer</li>
+          <li>Staged, provisioned, and led the hot cut migration of a 23-site school district VPLS network from Nokia FP3 to FP4 platform, completing all 23 sites in under 60 minutes with zero service disruption</li>
+          <li>Diagnosed and resolved a failed geo-redundant SIP circuit transfer</li>
           <li>Trained and mentored two new hires in Nokia configuration, circuit provisioning, and troubleshooting methodology; one has since advanced to a management role</li>
         </ul>
       </div>
@@ -539,9 +538,9 @@
           <a class="study-link" href="https://github.com/therossfisher/offensive-security-journey" target="_blank">github.com/therossfisher →</a>
         </div>
         <p class="study-desc">
-          TryHackMe Jr Penetration Tester path — top 2% globally, 157 rooms completed. HackTheBox Starting Point
-          machines. Documenting methodology, tooling, and findings in a public GitHub vault.
-          Tools in active use include nmap, gobuster, Burp Suite, Caido, Metasploit, Responder, and Hashcat.
+          TryHackMe Jr Penetration Tester path, top 2% globally, 157 rooms completed. HackTheBox Starting Point
+          machines. Methodology, tooling, and findings documented in a public GitHub vault.
+          Active tools: nmap, gobuster, Burp Suite, Caido, Metasploit, Responder, Hashcat.
         </p>
       </div>
 
@@ -617,21 +616,26 @@ async function updateVisitorCount() {
 }
 
 async function updateIssPosition() {
+    const el = document.getElementById('iss-position');
     try {
         const response = await fetch('https://api.wheretheiss.at/v1/satellites/25544');
+        if (!response.ok) {
+            throw new Error('HTTP ' + response.status);
+        }
         const data = await response.json();
         const lat = data.latitude.toFixed(4);
         const lon = data.longitude.toFixed(4);
         const mapsUrl = 'https://www.google.com/maps?q=' + lat + ',' + lon;
-        const el = document.getElementById('iss-position');
         el.href = mapsUrl;
         el.textContent = 'Lat: ' + lat + ' | Lon: ' + lon;
-    } catch (error) { 
+    } catch (error) {
         console.error('Could not fetch ISS position:', error);
+        el.textContent = 'unavailable';
+        el.removeAttribute('href');
     }
 }
 updateVisitorCount();
-updateIssPosition();  
+updateIssPosition();
 const iss_position = setInterval(updateIssPosition, 10000);
 </script>
 </body>
