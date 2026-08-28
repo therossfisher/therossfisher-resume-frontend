@@ -170,6 +170,13 @@
   .cert.active .cert-meta { color: var(--accent); }
   .cert:not(.active) .cert-meta { color: var(--text-muted); }
 
+  .cert-note {
+    margin-top: 14px;
+    font-size: 12.5px;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
   .job {
     margin-bottom: 28px;
     padding-bottom: 28px;
@@ -244,19 +251,18 @@
 
   .study-item:last-child { margin-bottom: 0; }
 
-  .study-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 6px;
-  }
-
   .study-name {
     font-size: 14px;
     font-weight: 600;
     color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+
+  .study-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 12px;
   }
 
   .study-link {
@@ -268,12 +274,6 @@
 
   .study-link:hover { text-decoration: underline; }
 
-  .study-desc {
-    font-size: 13.5px;
-    color: var(--text-secondary);
-    line-height: 1.65;
-  }
-
   .skill-rows {
     display: flex;
     flex-direction: column;
@@ -281,10 +281,10 @@
   }
 
   .skill-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: 132px 1fr;
     gap: 16px;
     align-items: baseline;
-    flex-wrap: wrap;
   }
 
   .skill-label {
@@ -293,8 +293,6 @@
     color: var(--text-muted);
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    min-width: 130px;
-    flex-shrink: 0;
   }
 
   .skill-values {
@@ -367,7 +365,7 @@
     .footer { padding: 16px 24px; }
     .contact-block { text-align: left; }
     .header-top { flex-direction: column; }
-    .skill-label { min-width: unset; width: 100%; }
+    .skill-row { grid-template-columns: 1fr; gap: 4px; }
   }
 
 @media print {
@@ -378,6 +376,11 @@
     .name-sub { color: var(--accent) !important; }
     .summary { color: var(--text-secondary) !important; border-top-color: var(--border) !important; }
     .contact-block a, .contact-block span { color: var(--text-muted) !important; }
+    .section { margin-bottom: 26px; }
+    .job { page-break-inside: avoid; }
+    .study-item { page-break-inside: avoid; }
+    .section-title { page-break-after: avoid; }
+    .footer { display: none; }
   }
 </style>
 </head>
@@ -436,27 +439,15 @@
           <div class="cert-full">GIAC Advisory Board Member</div>
           <div class="cert-meta">Active — expires Dec 2028</div>
         </div>
-        <div class="cert">
-          <div class="cert-name">ISC² CC</div>
-          <div class="cert-full">Certified in Cybersecurity</div>
-          <div class="cert-meta">Expired Jan 2026</div>
-        </div>
-        <div class="cert">
-          <div class="cert-name">CCNA</div>
-          <div class="cert-full">Cisco Certified Network Associate</div>
-          <div class="cert-meta">Expired Jul 2024</div>
-        </div>
-        <div class="cert">
-          <div class="cert-name">NRS-I</div>
-          <div class="cert-full">Nokia Routing Specialist I</div>
-          <div class="cert-meta">Expired May 2025</div>
-        </div>
         <div class="cert active">
           <div class="cert-name">AWS SAA-C03</div>
           <div class="cert-full">AWS Solutions Architect Associate</div>
           <div class="cert-meta">In progress — 2026</div>
         </div>
       </div>
+      <p class="cert-note">
+        Previously held: ISC² CC (exp. Jan 2026) · Cisco CCNA (exp. Jul 2024) · Nokia NRS-I (exp. May 2025)
+      </p>
     </section>
 
     <section class="section">
@@ -471,14 +462,13 @@
           <div class="job-dates">Mar 2022 — Present</div>
         </div>
         <ul class="job-bullets">
-          <li>Provision end-to-end Layer 2 and Layer 3 customer services on Nokia production MPLS routing infrastructure spanning California, Nevada, Arizona, and Idaho — a fleet of thousands of carrier-grade devices maintained at 99% uptime</li>
+          <li>Provision end-to-end Layer 2 and Layer 3 customer services on Nokia production MPLS routing infrastructure spanning California, Nevada, Arizona, and Idaho, across a fleet of thousands of carrier-grade devices</li>
           <li>Build and execute service configuration scripts using in-house automation tooling to deploy and modify services across the Nokia router fleet; averaged 2–3 circuit builds and cutovers per working day with zero outages across hundreds of deployments</li>
-          <li>Monitor network performance and service quality using Skylight with Accedian Network Interface Devices at carrier-to-customer demarcation points</li>
-          <li>Provide real-time provisioning support to field technicians during installations, troubleshooting escalations, and live maintenance windows</li>
-          <li>Coordinate equipment migrations and service re-provisioning during maintenance windows, updating router configurations to move services from legacy to replacement hardware</li>
-          <li>Staged, provisioned, and led the hot cut migration of a 23-site school district VPLS network from Nokia FP3 to FP4 platform — all 23 sites completed in under 60 minutes with zero service disruption</li>
+          <li>Staged, provisioned, and led the hot cut migration of a 23-site school district VPLS network from Nokia FP3 to FP4 platform, completing all 23 sites in under 60 minutes with zero service disruption</li>
           <li>Diagnosed and resolved a failed geo-redundant SIP circuit transfer that had stumped prior escalations</li>
-          <li>Trained and mentored two new hires in Nokia configuration, circuit provisioning, and troubleshooting methodology; one has since advanced to a management role</li>
+          <li>Monitor network performance and service quality using Skylight with Accedian Network Interface Devices at carrier-to-customer demarcation points</li>
+          <li>Coordinate equipment migrations and service re-provisioning during maintenance windows, updating router configurations to move services from legacy to replacement hardware</li>
+          <li>Provide real-time provisioning support to field technicians during installations, escalations, and live maintenance windows; trained and mentored two new hires, one of whom has since advanced to a management role</li>
         </ul>
       </div>
 
@@ -491,11 +481,10 @@
           <div class="job-dates">Aug 2018 — Mar 2022</div>
         </div>
         <ul class="job-bullets">
-          <li>Installed, configured, troubleshot, and repaired enterprise Cox Business services including Metro-Ethernet, SIP trunks, IP Centrex, Business Voice Manager, and detection and surveillance systems across a diverse customer base — SOHO, multi-campus enterprises, schools, hospitals, non-profits, and military installations including US Navy and USMC facilities in San Diego</li>
-          <li>Deployed and maintained IP telephony environments built on Edgewater Networks Edgemark devices, PoE switching, and Cisco and Polycom endpoints; supported both packet-switched Business Voice Manager and IP Centrex installations from initial build through troubleshooting</li>
-          <li>Rebuilt a 40+ camera surveillance system across two campuses for a large mortuary facility over several days, coordinating multiple technicians throughout the project; led small teams as senior technician on multi-site surveillance and security system installs</li>
+          <li>Installed, configured, and troubleshot enterprise Cox Business services including Metro-Ethernet, SIP trunks, IP Centrex, Business Voice Manager, and surveillance systems for SOHO, multi-campus enterprises, schools, hospitals, and military installations including US Navy and USMC facilities in San Diego</li>
+          <li>Deployed and maintained IP telephony environments built on Edgewater Networks Edgemark devices, PoE switching, and Cisco and Polycom endpoints, from initial build through troubleshooting</li>
           <li>Subject matter expert for detection and surveillance systems and security panel configuration; primary escalation technician for complex voice, data, and security issues across the San Diego region</li>
-          <li>Trained and coached new hires and technicians expanding into new product lines including surveillance, voice, and data services</li>
+          <li>Led small teams as senior technician on multi-site surveillance installs, including a 40+ camera rebuild across two campuses</li>
         </ul>
       </div>
 
@@ -508,12 +497,9 @@
           <div class="job-dates">Sep 2015 — Aug 2018</div>
         </div>
         <ul class="job-bullets">
-          <li>Supervised a team of 14 field technicians across residential and commercial service operations, covering daily check-ins, quality inspections, safety training, and customer escalations</li>
+          <li>Supervised a team of 14 field technicians across residential and commercial service operations, covering quality inspections, safety training, and customer escalations</li>
           <li>Tracked and drove team performance across four scorecards: quality checks, points per hour, home certification pass rates, and net promoter scores</li>
-          <li>Achieved quarterly NPS regional top performer by focusing on first-time fix rates and technician coaching — fewer callbacks, better customer outcomes</li>
-          <li>Spent mornings in the field alongside the team, including riding out in a bucket truck for aerial plant access when technicians needed support on jobs they couldn't safely complete alone</li>
-          <li>Handled customer escalations directly, de-escalating difficult situations in person when phone resolution wasn't enough</li>
-          <li>Coached multiple team members into promotions; one advanced into a leadership role</li>
+          <li>Achieved quarterly NPS regional top performer by focusing on first-time fix rates and technician coaching; coached multiple team members into promotions, one into a leadership role</li>
         </ul>
       </div>
 
@@ -527,43 +513,36 @@
         </div>
         <ul class="job-bullets">
           <li>Installed and serviced Cox residential broadband, digital telephone, home networking, and home security and automation systems across two markets over nine years</li>
-          <li>Specialized in repeat-visit resolution — diagnosed and permanently fixed chronic signal and wiring issues that prior technicians had missed or worked around, including full re-engineering of residential coax plant when needed</li>
-          <li>Replaced aerial drops from telephone poles and flush mounts, repaired and rewired internal plant to bring customer homes up to signal standards</li>
-          <li>Selected as one of the first technicians trained on Cox Home Security at launch; expanded scope from video-only installs to covering internet, voice, and security and automation systems</li>
-          <li>Regularly mentored and trained new hires and coached technicians on products and service types outside their current certifications</li>
+          <li>Specialized in repeat-visit resolution, permanently fixing chronic signal and wiring issues that prior technicians had missed or worked around; selected as one of the first technicians trained on Cox Home Security at launch</li>
         </ul>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-title">Independent Study &amp; Research</div>
+      <div class="section-title">Security Projects &amp; Research</div>
 
       <div class="study-item">
-        <div class="study-header">
-          <div class="study-name">Terrapot — Cloud-Native Honeypot and Threat Intelligence Platform</div>
+        <div class="study-name">Terrapot — Cloud-Native Honeypot and Threat Intelligence Platform</div>
+        <div class="study-links">
           <a class="study-link" href="https://github.com/therossfisher/terrapot" target="_blank">github.com/therossfisher/terrapot →</a>
           <a class="study-link" href="https://www.therossfisher.xyz/terrapot/" target="_blank">Read the write-up →</a>
         </div>
-        <p class="study-desc">
-          AWS-hosted security monitoring platform built entirely with Terraform, Docker, and GitHub Actions CI/CD.
-          Runs a live Cowrie SSH honeypot and DShield sensor on EC2, with threat intelligence enrichment via
-          AbuseIPDB, canary token alerting via CloudTrail and EventBridge, log aggregation with Grafana and Loki,
-          and infrastructure security scanning with Checkov. All 42 AWS resources provisioned as code with
-          S3 remote state.
-        </p>
+        <ul class="job-bullets">
+          <li>Built an AWS honeypot and threat intelligence platform provisioned entirely as code: 42 resources in modular Terraform with S3 remote state, Docker Compose services, and a GitHub Actions pipeline gating every merge on Checkov policy scanning</li>
+          <li>Designed the network and IAM layer from scratch: VPC, subnetting, security group segmentation, and least-privilege instance roles, with threat intelligence enrichment via Lambda and AbuseIPDB and canary alerting on CloudTrail and EventBridge</li>
+          <li>Log aggregation and dashboards in Grafana, Loki, and Promtail with automated TLS via Certbot; validated through full destroy-and-rebuild cycles with zero configuration drift, holding monthly cost under $5</li>
+        </ul>
       </div>
 
       <div class="study-item">
-        <div class="study-header">
-          <div class="study-name">Security Research — DShield / SANS ISC Honeypot</div>
+        <div class="study-name">Security Research — DShield / SANS ISC Honeypot</div>
+        <div class="study-links">
           <a class="study-link" href="https://dashboard.therossfisher.xyz" target="_blank">dashboard.therossfisher.xyz →</a>
         </div>
-        <p class="study-desc">
-          Raspberry Pi 4 running Cowrie SSH/Telnet honeypot and Suricata 7.0 IDS with Emerging Threats ruleset,
-          reporting to the SANS Internet Storm Center (sensor ID 3000055796).
-          Documented active attack campaigns observed on live sensor data including Redtail cryptominer
-          and Outlaw/mdrfckr IRC botnet activity (May 2026).
-        </p>
+        <ul class="job-bullets">
+          <li>Raspberry Pi 4 running Cowrie SSH/Telnet honeypot and Suricata 7.0 IDS with the Emerging Threats ruleset, reporting continuously to the SANS Internet Storm Center (sensor ID 3000055796)</li>
+          <li>Documented active attack campaigns observed on live sensor data, including Redtail cryptominer and Outlaw/mdrfckr IRC botnet activity (May 2026)</li>
+        </ul>
       </div>
 
     </section>
@@ -580,12 +559,12 @@
           <span class="skill-values">AWS (EC2, S3, Lambda, DynamoDB, CloudTrail, EventBridge, CloudWatch, GuardDuty, IAM, API Gateway, Route53, CloudFront, SSM Parameter Store)</span>
         </div>
         <div class="skill-row">
-          <span class="skill-label">Infrastructure</span>
-          <span class="skill-values">Terraform, Docker, GitHub Actions CI/CD, Checkov, Git, S3 remote state, infrastructure as code</span>
+          <span class="skill-label">Infra as Code</span>
+          <span class="skill-values">Terraform, Docker, GitHub Actions CI/CD, Checkov policy scanning, Git, S3 remote state</span>
         </div>
         <div class="skill-row">
           <span class="skill-label">Security Tools</span>
-          <span class="skill-values">Suricata, Cowrie, DShield, Wireshark, nmap, gobuster, Burp Suite, Caido, Metasploit, Responder, Hashcat, Grafana, Loki, Promtail</span>
+          <span class="skill-values">Suricata, Cowrie, DShield, Grafana, Loki, Promtail, Wireshark, nmap, gobuster, Burp Suite, Caido, Metasploit, Responder, Hashcat</span>
         </div>
         <div class="skill-row">
           <span class="skill-label">Security Concepts</span>
